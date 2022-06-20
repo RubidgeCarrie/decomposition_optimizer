@@ -1,16 +1,16 @@
 import numpy as np
 
-
 class Circuit:
     """Generic circuit defined using dictionary of all gates per layer and
-        resulting unitary"""
+        resulting unitary."""
 
     def __init__(self, num_qubits, gate_dict={}, unitary=None):
         """
         Args:
-            num_qubits (int): Number of qubit in circuit
-            gate_dict (dict): Key is the "layer" number and value is a list of gates
-            unitary (ndarray): Total unitary of circuit
+            num_qubits (int): Number of qubit in circuit.
+            gate_dict (dict): Key is the "layer" number and value is a list of gates.
+            unitary (ndarray): Total unitary of circuit.
+         
         """
         self.num_qubits = num_qubits
         self.unitary = unitary
@@ -22,7 +22,7 @@ class Circuit:
         self.no_layers = len(self.gate_dict)
 
     def add_layer(self, gate_ls):
-        """ Adds gates in gate_ls to circuit assuming they are in the form of unitaries acting on all qubits"""
+        """ Adds gates in gate_ls to circuit assuming they are in the form of unitaries acting on all qubits."""
 
         unitary_layer = gate_ls[0]
 
@@ -36,7 +36,7 @@ class Circuit:
 
 
 class U3Gate:
-    """One qubit unitary in SU(2)"""
+    """One qubit unitary in SU(2)."""
     def __init__(self, theta, phi, lam):
         self.theta = theta
         self.phi = phi
@@ -59,14 +59,16 @@ class FermiSimGate:
         """ Fermionic simulation gate.
 
             Args:
-            theta: iSWAP angle
-            phi: CPhase angle
-            zeta, chi, eta: single-qubit phase angles"""
+            theta: iSWAP angle.
+            phi: CPhase angle.
+            zeta, chi, eta: single-qubit phase angles.
+            """
         self.theta = theta
         self.phi = phi
         self.zeta = zeta
         self.chi = chi
         self.eta = eta
+        
     @property
     def matrix(self):
 
